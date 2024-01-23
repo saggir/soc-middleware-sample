@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: socmiddleware-deployment
+  namespace: socmiddleware
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: socmiddleware
+  template:
+    metadata:
+      labels:
+        app: socmiddleware
+    spec:
+      imagePullSecrets:
+        - name: docker-pull-secret-devx-research
+      containers:
+      - name: socmiddleware
+        image: devx-research.common.repositories.cloud.sap/saggir/socmiddleware:0.1.0
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: socmiddleware
+  namespace: socmiddleware
+spec:
+  type: ClusterIP
+  selector:
+    app: socmiddleware
+  ports:
+    - port: 8080
+      targetPort: 8080
+
