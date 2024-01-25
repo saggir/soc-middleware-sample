@@ -52,7 +52,7 @@ Both projects include their Kubernetes deployment files and Dockerfiles.
 
 1. **Port Forward the Approuter Service**:
    ```bash
-   kubectl port-forward svc/socmiddleware 5000:5000 -n socmiddleware
+   kubectl port-forward svc/approuter-service 5000:5000 -n socmiddleware
    ```
 
 2. **Test the Approuter API**:

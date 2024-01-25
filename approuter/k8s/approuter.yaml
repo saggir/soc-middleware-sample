@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-approuter-deployment
+  name: approuter
   namespace: socmiddleware
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: my-approuter
+      app: approuter
   template:
     metadata:
       labels:
-        app: my-approuter
+        app: approuter
     spec:
       containers:
-      - name: my-approuter
-        image: devx-research.common.repositories.cloud.sap/saggir/approuter:0.1.8
+      - name: approuter
+        image: devx-research.common.repositories.cloud.sap/saggir/approuter:0.1.9
         ports:
         - containerPort: 5000
       imagePullSecrets:
@@ -25,12 +25,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-approuter-service
+  name: approuter-service
   namespace: socmiddleware
 spec:
   type: ClusterIP
   selector:
-    app: my-approuter
+    app: approuter
   ports:
     - port: 5000
       targetPort: 5000

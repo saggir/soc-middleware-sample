@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: socmiddleware-deployment
+  name: socmiddleware
   namespace: socmiddleware
 spec:
   replicas: 1
@@ -17,7 +17,7 @@ spec:
         - name: docker-pull-secret-devx-research
       containers:
       - name: socmiddleware
-        image: devx-research.common.repositories.cloud.sap/saggir/socmiddleware:0.1.0
+        image: devx-research.common.repositories.cloud.sap/saggir/socmiddleware:0.1.1
         ports:
         - containerPort: 8080
 
